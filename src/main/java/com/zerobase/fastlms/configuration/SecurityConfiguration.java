@@ -28,11 +28,18 @@ public class SecurityConfiguration {
     public SecurityFilterChain filterChain(
             HttpSecurity http
     ) throws Exception {
+
         http.authorizeRequests()
                 .antMatchers("/"
                         , "/member/register"
-                        , "/member/email-auth")
+                        , "/member/email-auth"
+                        , "/member/find_password"
+                        , "/member/reset/password")
                 .permitAll();
+
+        http.authorizeRequests()
+                        .antMatchers("/admin/**")
+                                .hasAuthority("ROLE_ADMIN");
 
         http.formLogin()
                 .loginPage("/member/login")
@@ -46,6 +53,9 @@ public class SecurityConfiguration {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
+
+        http.exceptionHandling()
+                .accessDeniedPage("/error/denied");
 
         return http.build();
     }

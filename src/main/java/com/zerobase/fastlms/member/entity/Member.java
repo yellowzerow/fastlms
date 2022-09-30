@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Builder
-@Data
+@Setter
+@Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +24,9 @@ public class Member {
     private boolean emailAuthYn;        //이메일 인증 성공 여부
     private LocalDateTime emailAuthDt;  //이메일 인증 시간
     private String emailAuthKey;        //이메일 인증 키 저장
+
+    private String resetPasswordKey;
+    private LocalDateTime resetPasswordLimitDt;
+
+    private boolean adminYn;
 }
