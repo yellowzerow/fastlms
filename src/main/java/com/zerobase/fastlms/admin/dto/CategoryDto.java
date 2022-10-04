@@ -18,6 +18,8 @@ public class CategoryDto {
     int sortValue;
     boolean usingYn;
 
+    //컬럼 추가
+    int courseCount;
 
     public static List<CategoryDto> of(List<Category> categories) {
         if (categories != null) {

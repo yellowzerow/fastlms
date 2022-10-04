@@ -13,4 +13,8 @@ public interface CategoryService {
     boolean update(CategoryInput input);    //카테고리 수정
 
     boolean delete(long id);            //카테고리 삭제
+
+
+    //사용자
+    List<CategoryDto> frontList(CategoryDto parameter);     //프론트 카테고리 리스트
 }

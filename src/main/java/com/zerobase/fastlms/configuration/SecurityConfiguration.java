@@ -29,6 +29,8 @@ public class SecurityConfiguration {
             HttpSecurity http
     ) throws Exception {
 
+        http.headers().frameOptions().sameOrigin();
+
         http.authorizeRequests()
                 .antMatchers("/"
                         , "/member/register"
