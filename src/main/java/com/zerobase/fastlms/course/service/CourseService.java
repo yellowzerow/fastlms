@@ -22,4 +22,6 @@ public interface CourseService {
     CourseDto frontDetail(long id);     //프론트 강좌 상세 정보
 
     ServiceResult req(TakeCourseInput input);     //수강 신청
+
+    List<CourseDto> listAll();          //강좌 목록 불러오기
 }

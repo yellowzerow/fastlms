@@ -55,6 +55,8 @@ public class CourseServiceImpl implements CourseService {
                 .salePrice(input.getSalePrice())
                 .saleEndDt(saleEndDt)
                 .regDt(LocalDateTime.now())
+                .filename(input.getFilename())
+                .urlFilename(input.getUrlFilename())
                 .build();
         courseRepository.save(course);
 
@@ -82,6 +84,8 @@ public class CourseServiceImpl implements CourseService {
         course.setSalePrice(input.getSalePrice());
         course.setSaleEndDt(saleEndDt);
         course.setUdtDt(LocalDateTime.now());
+        course.setFilename(input.getFilename());
+        course.setUrlFilename(input.getUrlFilename());
         courseRepository.save(course);
 
         return true;
@@ -160,7 +164,7 @@ public class CourseServiceImpl implements CourseService {
             Optional<Course> optionalCourse = courseRepository.findById(input.getCourseId());
             if (optionalCourse.isEmpty()) {
                 result.setResult(false);
-                result.setMessage("강좌 정보가 종재하지 않습니다.");
+                result.setMessage("강좌 정보가 존재하지 않습니다.");
                 return result;
             }
 
@@ -189,5 +193,12 @@ public class CourseServiceImpl implements CourseService {
             result.setResult(true);
             result.setMessage("");
             return result;
+    }
+
+    @Override
+    public List<CourseDto> listAll() {
+        List<Course> courseList = courseRepository.findAll();
+
+        return CourseDto.of(courseList);
     }
 }

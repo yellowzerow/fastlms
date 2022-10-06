@@ -197,11 +197,33 @@ public class MemberController {
         try {
             result = memberService.resetPassword(input.getId(), input.getPassword());
         } catch (Exception e){
-
+            e.printStackTrace();
         }
 
         model.addAttribute("result", result);
 
         return "member/reset_password_result";
+    }
+
+    @GetMapping("/member/withdraw")
+    public String memberWithdraw(Model model) {
+        return "member/withdraw";
+    }
+
+    @PostMapping("/member/withdraw")
+    public String memberWithdrawSubmit(
+            Model model,
+            MemberInput input,
+            Principal principal
+    ) {
+        String userId = principal.getName();
+
+        ServiceResult result = memberService.withdraw(userId, input.getPassword());
+        if (!result.isResult()) {
+            model.addAttribute("message", result.getMessage());
+            return "common/error";
+        }
+
+        return "redirect:/member/logout";
     }
 }

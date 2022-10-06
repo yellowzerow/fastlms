@@ -33,4 +33,6 @@ public interface MemberService extends UserDetailsService {
 
     ServiceResult updateMember(MemberInput input);              //회원 정보 수정
     ServiceResult updateMemberPassword(MemberInput input);      //회원 정보 페이지 내 비밀번호 변경
+
+    ServiceResult withdraw(String userId, String password);      //회원 탈퇴
 }
