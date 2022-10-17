@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>메인 페이지</title>
-    </head>
-    <body>
-        <h1> 메인 페이지 </h1>
-        <div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
-    
-        <div>
-	        <img src="/files/2022/10/07/2d7d93dd24f9409a81dc4cf40abde318.jfif"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+	
+	<script>
+		$(document).ready(function(){
+			$('.bxSlider').bxSlider({
+				auto : true,
+				mode: 'fade',
+				pager: true,
+				autoControl : true,
+				touchEnabled : false
+			});
+		});
+	</script>
+	
+</head>
+<body>
+    <h1>메인 페이지 </h1>
+    <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+    <div class="bxSlider">
+        <div th:each="x : ${bannerList}">
+	       <a th:href="${x.linkedUrl}"
+	          th:target="${#strings.equals(x.howOpen, 'CURRENT_PAGE')} ? '_self' : '_blank'">
+		       <img th:src="${x.urlFilename}">
+	       </a>
         </div>
-    </body>
+    </div>
+
+</body>
 </html>

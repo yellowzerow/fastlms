@@ -1,6 +1,6 @@
 package com.zerobase.fastlms.admin.controller;
 
-import com.zerobase.fastlms.admin.dto.MemberDto;
+import com.zerobase.fastlms.member.dto.MemberDto;
 import com.zerobase.fastlms.admin.model.MemberInput;
 import com.zerobase.fastlms.admin.model.MemberParam;
 import com.zerobase.fastlms.course.controller.BaseController;

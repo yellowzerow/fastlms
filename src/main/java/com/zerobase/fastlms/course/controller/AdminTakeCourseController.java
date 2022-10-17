@@ -29,16 +29,16 @@ public class AdminTakeCourseController extends BaseController{
     ) {
         param.init();
 
-        List<TakeCourseDto> courseList = takeCourseService.list(param);
+        List<TakeCourseDto> takeCourseList = takeCourseService.list(param);
 
         long totalCount = 0;
-        if (!CollectionUtils.isEmpty(courseList)) {
-            totalCount = courseList.get(0).getTotalCount();
+        if (!CollectionUtils.isEmpty(takeCourseList)) {
+            totalCount = takeCourseList.get(0).getTotalCount();
         }
         String queryString = param.getQueryString();
         String pagerHtml = getPagerHtml(totalCount, param.getPageSize(), param.getPageIndex(), queryString);
 
-        model.addAttribute("list", courseList);
+        model.addAttribute("list", takeCourseList);
         model.addAttribute("totalCount", totalCount);
         model.addAttribute("pager", pagerHtml);
 

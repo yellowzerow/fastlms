@@ -1,6 +1,6 @@
 package com.zerobase.fastlms.member.controller;
 
-import com.zerobase.fastlms.admin.dto.MemberDto;
+import com.zerobase.fastlms.member.dto.MemberDto;
 import com.zerobase.fastlms.course.dto.TakeCourseDto;
 import com.zerobase.fastlms.course.model.ServiceResult;
 import com.zerobase.fastlms.course.service.TakeCourseService;

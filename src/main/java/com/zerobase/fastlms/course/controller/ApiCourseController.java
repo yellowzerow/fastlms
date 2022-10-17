@@ -1,15 +1,13 @@
 package com.zerobase.fastlms.course.controller;
 
-import com.zerobase.fastlms.admin.common.model.ResponseResult;
 import com.zerobase.fastlms.admin.service.CategoryService;
+import com.zerobase.fastlms.common.model.ResponseResult;
 import com.zerobase.fastlms.course.model.ServiceResult;
 import com.zerobase.fastlms.course.model.TakeCourseInput;
 import com.zerobase.fastlms.course.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;

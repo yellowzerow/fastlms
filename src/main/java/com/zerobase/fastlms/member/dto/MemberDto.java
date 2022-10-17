@@ -1,10 +1,12 @@
-package com.zerobase.fastlms.admin.dto;
+package com.zerobase.fastlms.member.dto;
 
+import com.zerobase.fastlms.member.entity.LoginHistory;
 import com.zerobase.fastlms.member.entity.Member;
 import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,6 +39,9 @@ public class MemberDto {
     long totalCount;
     long seq;
 
+    LocalDateTime lastLoginDt;
+    List<LoginHistory> loginHistoryList;
+
     public static MemberDto of(Member member) {
        return MemberDto.builder()
                .userId(member.getUserId())
@@ -54,6 +59,7 @@ public class MemberDto {
                .zipcode(member.getZipcode())
                .address(member.getAddress())
                .addressDetail(member.getAddressDetail())
+               .lastLoginDt(member.getLastLoginDt())
                .build();
     }
 
@@ -64,5 +70,10 @@ public class MemberDto {
     public String getUdtDtText() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return udtDt != null ? udtDt.format(formatter) : "";
+    }
+
+    public String getLastLoginDtText() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+        return lastLoginDt != null ? lastLoginDt.format(formatter) : "";
     }
 }
