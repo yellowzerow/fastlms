@@ -3,7 +3,7 @@ spring:
     url: jdbc:mariadb://127.0.0.1:3306/minicampus
     driver-class-name: org.mariadb.jdbc.Driver
     username: minicampus_user
-    password: a1234
+    password: 
   jpa:
     generate-ddl: true
     hibernate:
@@ -12,8 +12,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: yellowzerow@gmail.com
-    password: vbwoedkyyavrawfy
+    username:
+    password:
     properties:
       mail:
         smtp:
